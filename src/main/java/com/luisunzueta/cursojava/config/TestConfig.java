@@ -1,7 +1,9 @@
 package com.luisunzueta.cursojava.config;
 
+import com.luisunzueta.cursojava.entities.Category;
 import com.luisunzueta.cursojava.entities.Order;
 import com.luisunzueta.cursojava.entities.enums.OrderStatus;
+import com.luisunzueta.cursojava.repositories.CategoryRepository;
 import com.luisunzueta.cursojava.repositories.OrderRepository;
 import com.luisunzueta.cursojava.repositories.UserRepository;
 import com.luisunzueta.cursojava.entities.User;
@@ -22,6 +24,8 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Override
     public void run (String... args) throws Exception{
@@ -35,6 +39,12 @@ public class TestConfig implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(u1, u2));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+
+        Category cat1 = new Category(null, "Eletronics");
+        Category cat2 = new Category(null,"Books");
+        Category cat3 = new Category(null, "Computers");
+
+       categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
 
 
     }
